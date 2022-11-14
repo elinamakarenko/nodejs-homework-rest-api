@@ -1,10 +1,11 @@
 const { Contact } = require("../../models/contact");
-const { RequestError } = require("../../helpers");
 const { schemas } = require("../../models/contact");
 
-const updateContact = async (req, res, next) => {
+const { RequestError } = require("../../helpers");
+
+const updateFavorite = async (req, res, next) => {
 	try {
-		const { error } = schemas.addSchema.validate(req.body);
+		const { error } = schemas.updateFavoriteSchema.validate(req.body);
 		if (error) {
 			throw RequestError(400, error.message);
 		}
@@ -20,4 +21,5 @@ const updateContact = async (req, res, next) => {
 		next(error);
 	}
 };
-module.exports = updateContact;
+
+module.exports = updateFavorite;
